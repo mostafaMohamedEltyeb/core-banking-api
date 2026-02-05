@@ -1,7 +1,9 @@
 package com.bank.corebanking.controller;
 
 import com.bank.corebanking.dto.request.BalanceInquiryRequest;
+import com.bank.corebanking.dto.request.ExecuteTransferRequest;
 import com.bank.corebanking.dto.resposne.BalanceInquiryResponse;
+import com.bank.corebanking.dto.resposne.ExecuteTransferResponse;
 import com.bank.corebanking.service.CoreBankingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,18 @@ public class CoreBankingController {
         BalanceInquiryResponse response = coreBankingService.getBalance(request);
 
         log.info("📤 Sending Balance Inquiry Response");
+
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/execute-transfer")
+    public ResponseEntity<ExecuteTransferResponse> executeTransfer(@RequestBody ExecuteTransferRequest request) {
+
+        log.info("📥 Received Execute Transfer Request");
+
+        ExecuteTransferResponse response = coreBankingService.executeTransfer(request);
+
+        log.info("📤 Sending Execute Transfer Response");
 
         return ResponseEntity.ok(response);
     }
