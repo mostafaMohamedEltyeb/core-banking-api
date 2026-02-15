@@ -26,6 +26,7 @@ public class CoreBankingController {
 
         log.info("📥 Received Balance Inquiry Request");
 
+        //todo create xyz
         BalanceInquiryResponse response = coreBankingService.getBalance(request);
 
         log.info("📤 Sending Balance Inquiry Response");
